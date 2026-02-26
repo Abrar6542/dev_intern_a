@@ -33,6 +33,10 @@ jobs:
           python manage.py check
         env:
           DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}      #This passes the secret into CI environment
+          FRONTEND_URL: http://127.0.0.1:3000
+          BACKEND_URL: http://127.0.0.1:8000
+          BE_ADMIN_EMAIL: admin@admin.com
+          BE_ADMIN_PASSWORD: admin
 
       # Frontend Setup
       - name: Setup Node
