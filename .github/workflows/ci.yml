@@ -32,7 +32,7 @@ jobs:
           cd backend
           python manage.py check
         env:
-          DJANGO_SECRET_KEY: ${{ secret.DJANGO_SECRET_KEY }}      #This passes the secret into CI environment
+          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}      #This passes the secret into CI environment
 
       # Frontend Setup
       - name: Setup Node
