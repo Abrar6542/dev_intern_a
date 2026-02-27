@@ -82,3 +82,92 @@ Welcome, candidates! This project is a custom-built chatbot application that mim
 3. Run `npm run dev` to start the frontend server
 
 Go to `http://127.0.0.1:3000` and enjoy!
+
+
+📘 Deployment Guide
+>Repository Setup
+
+Forked the original repository
+Created feature branch: ash-assignment
+Implemented all changes in isolated branch
+
+#>Local Application Setup
+
+Backend Setup
+  cd backend
+  python -m venv venv
+  pip install -r dependencies.txt
+  python manage.py migrate
+  python manage.py runserver
+
+Backend accessible at:
+  http://127.0.0.1:8000
+
+Frontend Setup
+  cd frontend
+  npm install
+  npm run dev
+
+Frontend accessible at:
+  http://localhost:3000
+
+#>Docker Configuration
+
+Created Dockerfiles for:
+  Django backend
+  Next.js frontend
+  Used Docker Compose to orchestrate services:
+  docker compose up --build
+  Verified running containers using:
+  docker ps
+
+#>CI/CD Setup (GitHub Actions)
+
+#Configured CI workflow to:
+  Install dependencies
+  Inject required environment variables via GitHub Secrets
+  Run Django system checks
+  Resolved issues related to:
+  DJANGO_SECRET_KEY
+  FRONTEND_URL
+  BACKEND_URL
+  Successfully validated CI pipeline execution.
+
+#>Infrastructure Provisioning Using Terraform
+
+#Created Terraform configuration to provision:
+EC2 instance (t3.micro)
+Security group (ports 22, 3000, 8000)
+
+Docker installation via user_data
+Commands executed:
+  terraform init
+  terraform plan -var="key_name=YOUR_KEY_NAME"
+  terraform apply -var="key_name=YOUR_KEY_NAME"
+Terraform output provided the EC2 public IP.
+
+
+#>EC2 Deployment
+
+Connected via SSH:
+ssh -i key.pem ubuntu@<public-ip>
+
+#Steps performed:
+  Installed Docker Compose
+  Cloned repository
+  Started containers
+  docker-compose up --build -d
+Application accessible at:
+  http://<public-ip>:3000
+
+
+Logs / Screenshots
+Included:
+ Terraform apply success output
+ Docker running containers (docker ps)
+ CI pipeline success
+
+EC2 instance running in AWS
+Infrastructure Cleanup
+  After testing:
+  terraform destroy -var="key_name=YOUR_KEY_NAME"
